@@ -1,7 +1,11 @@
 #include "Windsensor.h"
 
-int Windsensor::begin() {
-    return 1;
+bool Windsensor::begin() {
+    return true;
+}
+
+int Windsensor::getErrorCode() {
+    return 0;
 }
 
 float Windsensor::getValue() {

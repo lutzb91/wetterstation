@@ -8,7 +8,12 @@
  */
 class Regensensor : public ISensor {
     public:
-        int begin();
+        bool begin();
+        int getErrorCode();
         float getValue();
         void loop();
+
+        const __FlashStringHelper* getName() {
+            return F("Regensensor");
+        }
 };

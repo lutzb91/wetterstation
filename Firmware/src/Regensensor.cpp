@@ -1,7 +1,11 @@
 #include "Regensensor.h"
 
-int Regensensor::begin() {
-    return 1;
+bool Regensensor::begin() {
+    return true;
+}
+
+int Regensensor::getErrorCode() {
+    return 0;
 }
 
 float Regensensor::getValue() {

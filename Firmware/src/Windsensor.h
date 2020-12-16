@@ -9,7 +9,12 @@
 class Windsensor : public ISensor {
     private:
     public:
-        int begin();
+        bool begin();
+        int getErrorCode();
         float getValue();
         void loop();
+
+        const __FlashStringHelper* getName() {
+            return F("Windsensor");
+        }
 };

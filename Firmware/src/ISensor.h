@@ -1,16 +1,30 @@
 #pragma once
 
+#include <Arduino.h>
+
 class ISensor {
     public:
         /**
-         * @brief Startet den Sensor. Liefert im Fehlerfall 0.
+         * @brief Startet den Sensor. Liefert false im Fehlerfall, sonst true.
          * 
-         * @return int  0 bei Fehler
+         * @return bool  false im Fehlerfall, sonst true
          */
-        virtual int begin() = 0;
+        virtual bool begin() = 0;
+        /**
+         * @brief Liefert im Fehlerfall einen sprechenden Fehlercode.
+         * 
+         * @return int 
+         */
+        virtual int getErrorCode() = 0;
         /**
          * @brief Loopfunktion des Sensors. Wird aus dem Hauptloop aufgerufen.
          * 
          */
         virtual void loop() = 0;
+        /**
+         * @brief Liefert den Namen des Sensors zur Anzeige. Muss mit F("...") zurueckgegeben werden.
+         * 
+         * @return const __FlashStringHelper* 
+         */
+        virtual const __FlashStringHelper* getName() = 0;
 };

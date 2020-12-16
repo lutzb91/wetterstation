@@ -59,6 +59,10 @@ void setup() {
 // Sensoren starten
   for(int i=0;i<NUM_SENSORS;i++) {
     if(!sensors[i]->begin()) {
+      Serial.print(F("Fehler bei der Initialisierung des Sensors: "));
+      Serial.println(sensors[i]->getName());
+      Serial.print(F("Fehlercode: "));
+      Serial.println(sensors[i]->getErrorCode());
       while(1) delay(10);
     }
   }
