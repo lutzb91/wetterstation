@@ -1,7 +1,7 @@
 #include "Windsensor.h"
 
-void Windsensor::begin(int pin) {
-
+int Windsensor::begin() {
+    return 1;
 }
 
 float Windsensor::getValue() {

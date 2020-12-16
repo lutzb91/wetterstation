@@ -5,7 +5,7 @@
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BME280.h>
 #include "Windsensor.h"
-#include "Rainsensor.h"
+#include "Regensensor.h"
 
 #define WIND 3
 
@@ -21,9 +21,9 @@ Adafruit_BME280 bme;
 #define NUM_SENSORS 2
 
 Windsensor windsensor;
-Rainsensor rainsensor;
+Regensensor regensensor;
 
-ISensor* sensors[] = { &windsensor, &rainsensor };
+ISensor* sensors[] = { &windsensor, &regensensor };
 
 void displaySensorDetails(void)
 {
@@ -55,8 +55,16 @@ void interrupt() {
 
 void setup() {
   Serial.begin(9600);
-  pinMode(WIND, INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(WIND), interrupt, RISING);
+
+// Sensoren starten
+  for(int i=0;i<NUM_SENSORS;i++) {
+    if(!sensors[i]->begin()) {
+      while(1) delay(10);
+    }
+  }
+
+  // pinMode(WIND, INPUT_PULLUP);
+  // attachInterrupt(digitalPinToInterrupt(WIND), interrupt, RISING);
 //     /* Enable auto-gain */
 //   mag.enableAutoRange(true);
 

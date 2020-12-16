@@ -3,11 +3,10 @@
 #include "ISensor.h"
 
 /**
- * @brief Windsensor, welche die Windgeschwindigkeit in km/h ermittelt.
+ * @brief Regensensor, welcher die Regenmenge in l/mm^2 ermittelt.
  * 
  */
-class Windsensor : public ISensor {
-    private:
+class Regensensor : public ISensor {
     public:
         int begin();
         float getValue();
