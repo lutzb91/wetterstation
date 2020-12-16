@@ -5,6 +5,7 @@
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BME280.h>
 #include "Windsensor.h"
+#include "Windrichtungsensor.h"
 #include "Regensensor.h"
 
 #define WIND 3
@@ -18,12 +19,13 @@ long count = 0;
 Adafruit_LSM303_Mag_Unified mag = Adafruit_LSM303_Mag_Unified(12345);
 Adafruit_BME280 bme;
 
-#define NUM_SENSORS 2
+#define NUM_SENSORS 3
 
 Windsensor windsensor;
+Windrichtungsensor windrichtungsensor;
 Regensensor regensensor;
 
-ISensor* sensors[] = { &windsensor, &regensensor };
+ISensor* sensors[] = { &windsensor, &windrichtungsensor, &regensensor };
 
 void displaySensorDetails(void)
 {
