@@ -1,5 +1,6 @@
 #pragma once
 
+#include <Arduino.h>
 #include "ISensor.h"
 
 /**
@@ -12,8 +13,13 @@ class Regensensor : public ISensor {
         int getErrorCode();
         float getValue();
         void loop();
+        void count();
 
         const __FlashStringHelper* getName() {
             return F("Regensensor");
         }
+    
+    private:
+        int counter = 0;
+        unsigned long debounce = 0;
 };
